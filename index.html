@@ -16,24 +16,34 @@
 
         <main>
             <form method="post">
-                <label for="webhook-url">Webhook URL</label>
-                <input id="webhook-url" type="url" required></input>
+                <p>
+                    <label for="webhook-url">Webhook URL</label>
+                    <input id="webhook-url" type="url" required></input>
+                </p>
                 
-                <label for="thread-id">Thread ID</label>
-                <input id="thread-id" type="number"></input>
+                <p>
+                    <label for="thread-id">Thread ID</label>
+                    <input id="thread-id" type="number"></input>
+                </p>
                 
-                <label for="message">Message</label>
-                <textarea id="message" required></textarea>
+                <p>
+                    <label for="message">Message</label>
+                    <textarea id="message" maxlength="2000" name="content" required></textarea>
+                </p>
                 
-                <button type="submit">Send</button>
+                <p>
+                    <button type="submit">Send</button>
+                </p>
                 
-                <label for="output">Server Response</label>
-                <output id="output">(None yet)</output>
+                <p>
+                    <label for="output">Server Response</label>
+                    <output id="output">(None yet)</output>
+                </p>
             </form>
         </main>
 
         <footer>
-            <p>Copyright 2022 <a href="https://magrathea.guide">Magrathea</a>.</p>
+            <p>Copyright (c) 2022 <a href="https://magrathea.guide">Magrathea</a>.</p>
             
             <p><a href="https://github.com/magratheaguide/mon-cala/blob/main/LICENSE">Released under the MIT License.</a></p>
             
