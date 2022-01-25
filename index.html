@@ -9,20 +9,35 @@
         </title>
     </head>
     <body>
-        <form method="post">
-            <label for="webhook-url">Webhook URL</label>
-            <input id="webhook-url" type="text" required></input>
+        <header>
+            <h1>Mon Cala</h1>
+            <p>Discord messages via webhook. A <a href="https://magrathea.guide">Magrathea</a> project.</a></p>
+        </header>
 
-            <label for="thread-id">Thread ID</label>
-            <input id="thread-id" type="number"></input>
+        <main>
+            <form method="post">
+                <label for="webhook-url">Webhook URL</label>
+                <input id="webhook-url" type="url" required></input>
+                
+                <label for="thread-id">Thread ID</label>
+                <input id="thread-id" type="number"></input>
+                
+                <label for="message">Message</label>
+                <textarea id="message" required></textarea>
+                
+                <button type="submit">Send</button>
+                
+                <label for="output">Server Response</label>
+                <output id="output">(None yet)</output>
+            </form>
+        </main>
 
-            <label for="message">Message</label>
-            <textarea id="message" required></textarea>
-
-            <button type="submit">Send</button>
-
-            <label for="output">Server Response</label>
-            <output id="output">(None yet)</output>
-        </form>
+        <footer>
+            <p>Copyright 2022 <a href="https://magrathea.guide">Magrathea</a>.</p>
+            
+            <p><a href="https://github.com/magratheaguide/mon-cala/blob/main/LICENSE">Released under the MIT License.</a></p>
+            
+            <p><a href="https://github.com/magratheaguide/mon-cala">View on GitHub.</a></p>
+        </footer>
     </body>
 </html>
