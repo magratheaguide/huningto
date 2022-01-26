@@ -1,0 +1,37 @@
+:root {
+    --border: 2px dotted;
+}
+
+body {
+    margin-inline: auto;
+    max-width: 90ch;
+    min-height: 100%;
+    padding: 1em;
+}
+
+footer {
+    border-block-start: var(--border);
+    padding-block-start: 1em;
+    text-align: center;
+}
+
+header {
+    text-align: center;
+}
+
+hr {
+    border: none;
+    border-block-start: var(--border);
+    margin-block: 1em;
+
+}
+
+output {
+    background-color: hsl(0deg 100% 0% / 0.1);
+    display: block;
+    padding: 1em;
+}
+
+.flow > * + * {
+    margin-block-start: var(--flow-space, 1em);
+}
