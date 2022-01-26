@@ -7,7 +7,9 @@ form.addEventListener("submit", event => {
     let url = constructUrl(form.elements);
     let body = new FormData();
 
-    body.append("content", form.elements.content.value);
+    // body.append("content", form.elements.content.value);
+
+    body.append("payload_json", form.elements.payload_json.value);
 
     fetch(url, {
         body: body,
