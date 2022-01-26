@@ -1,7 +1,6 @@
 "use strict";
 
 const form = document.querySelector("form");
-const output = document.querySelector("output");
 
 form.addEventListener("submit", event => {
     let url = constructUrl(form.elements);
@@ -16,11 +15,8 @@ form.addEventListener("submit", event => {
         method: "POST"
     }).then(response => {
         console.log(response);
-        output.value = `${ response.status }: ${ response.statusText }\n`;
-
-        response.text();
-    }).then(text => {
-        if (text) output.value += text;
+        
+        displayResponse(response);
     });
 
     event.preventDefault();
@@ -35,4 +31,33 @@ function constructUrl(elements) {
     }
 
     return baseUrl;
+}
+
+function displayResponse(response) {
+    const output = document.querySelector("output");
+
+    output.value = (`HTTP Status Code ${ response.status }: ${ response.statusText }`);
+
+    if (response.ok) {
+        linebreak(output);
+        output.append("Message sent successfully");
+    } else {
+        response.text().then(text => {
+            try {
+                let json = JSON.parse(text);
+
+                for (const [key, value] of Object.entries(json)) {
+                    linebreak(output);
+                    output.append(`${ key }: ${ value }`);
+                }
+            } catch {
+                linebreak(output);
+                output.append(text);
+            }
+        });
+    }
+}
+
+function linebreak(element) {
+    element.append(document.createElement("br"));
 }
