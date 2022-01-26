@@ -1,37 +1,54 @@
 :root {
-    --border: 2px dotted;
+    --border: 2px dotted var(--color-grey);
+
+    --color-grey: hsl(0deg 0% 50%);
 }
 
 body {
+    --flow-space: 2em;
+
     margin-inline: auto;
     max-width: 90ch;
     min-height: 100%;
-    padding: 1em;
+    padding: var(--flow-space);
 }
 
 footer {
     border-block-start: var(--border);
-    padding-block-start: 1em;
+    padding-block-start: var(--flow-space);
     text-align: center;
 }
 
+form > p {
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 60ch);
+    gap: 1em;
+    margin-block: 1em;
+}
+
+form > p button {
+    grid-column: 2;
+    justify-self: end;
+    min-inline-size: 15ch;
+}
+
 header {
+    border-block-end: var(--border);
+    padding-block-end: 1em;
     text-align: center;
 }
 
 hr {
     border: none;
     border-block-start: var(--border);
-    margin-block: 1em;
-
-}
-
-output {
-    background-color: hsl(0deg 100% 0% / 0.1);
-    display: block;
-    padding: 1em;
+    margin-block: 2em;
 }
 
 .flow > * + * {
     margin-block-start: var(--flow-space, 1em);
+}
+
+.flow > * > * {
+    /* reset to avoid unexpected inheritance */
+    --flow-space: 1em;
 }
