@@ -3,12 +3,19 @@
 const form = document.querySelector("form");
 
 form.addEventListener("submit", event => {
+    event.preventDefault();
+
+    let submitButton = form.querySelector("button[type='submit']");
     let url = constructUrl(form.elements);
     let body = new FormData();
 
-    // body.append("content", form.elements.content.value);
+    submitButton.setAttribute("disabled", "");
 
-    body.append("payload_json", form.elements.payload_json.value);
+    if (form.elements.payload_json.value) {
+        body.append("payload_json", form.elements.payload_json.value);
+    } else {
+        body.append("content", form.elements.content.value);
+    }
 
     fetch(url, {
         body: body,
@@ -19,7 +26,7 @@ form.addEventListener("submit", event => {
         displayResponse(response);
     });
 
-    event.preventDefault();
+    submitButton.removeAttribute("disabled");
 });
 
 function constructUrl(elements) {
