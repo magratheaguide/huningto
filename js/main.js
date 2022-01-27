@@ -2,6 +2,7 @@
 
 (function () {
     const form = document.querySelector("form");
+    const output = document.querySelector("output");
     
     form.addEventListener("submit", event => {
         event.preventDefault();
@@ -10,6 +11,7 @@
         let url = constructUrl(form.elements);
         let body = new FormData();
         
+        output.value = "";
         submitButton.setAttribute("disabled", "");
         
         if (form.elements.payload_json.value) {
@@ -42,14 +44,12 @@
     }
     
     function displayResponse(response) {
-        const output = document.querySelector("output");
-        
-        output.value = (`HTTP Status Code ${ response.status }: ${ response.statusText }`);
-        
         if (response.ok) {
             linebreak(output);
-            output.append("Message sent successfully");
+            output.value = ("Message sent successfully");
         } else {
+            output.value = (`HTTP Status Code ${ response.status }: ${ response.statusText }`);
+
             response.text().then(text => {
                 try {
                     let json = JSON.parse(text);
