@@ -5,12 +5,10 @@
 }
 
 body {
-    --flow-space: 2em;
-
     margin-inline: auto;
     max-width: 90ch;
     min-height: 100%;
-    padding: var(--flow-space);
+    padding: 2em;
 }
 
 fieldset {
@@ -32,6 +30,14 @@ footer {
     border-block-start: var(--border);
     padding-block-start: var(--flow-space);
     text-align: center;
+}
+
+form {
+    --flow-space: 2em;
+}
+
+form section > * {
+    --flow-space: 1em;
 }
 
 form button {
@@ -61,9 +67,4 @@ hr {
 
 .flow > * + * {
     margin-block-start: var(--flow-space, 1em);
-}
-
-.flow > * > * {
-    /* reset to avoid unexpected inheritance */
-    --flow-space: 1em;
 }
