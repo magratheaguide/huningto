@@ -19,16 +19,15 @@ footer {
     text-align: center;
 }
 
-form > p {
-    display: grid;
-    grid-template-columns: 1fr minmax(auto, 60ch);
+/* form section {
+    display: flex;
+    flex-direction: column;
     gap: 1em;
-    margin-block: 1em;
-}
+} */
 
-form > p button {
-    grid-column: 2;
-    justify-self: end;
+form button {
+    /* grid-column: 2; */
+    /* justify-self: end; */
     min-inline-size: 15ch;
 }
 
