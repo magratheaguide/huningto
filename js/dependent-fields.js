@@ -5,11 +5,11 @@
     
     const dependencyTriggers = form.querySelectorAll("input.js-dependency");
     const dependencyFollowers = form.querySelectorAll(".js-dependency:not(input)");
-    
+
     dependencyTriggers.forEach(trigger => {
         // consider initial states
         if (trigger.checked) {
-            updateDependencyFollowers(trigger.name, trigger.value, trigger.checked);
+            updateDependencyFollowers(trigger.name, trigger.value);
         }
         
         // update on change
@@ -18,10 +18,10 @@
         });
     });
     
-    function updateDependencyFollowers(key, value, checked) {
+    function updateDependencyFollowers(key, value, checked = true) {
         dependencyFollowers.forEach(follower => {
             if (follower.dataset[key]) {
-                if (follower.dataset[key] == value && checked) follower.removeAttribute("hidden");
+                if (checked && follower.dataset[key] == value) follower.removeAttribute("hidden");
                 else follower.setAttribute("hidden", "");
             }
         });

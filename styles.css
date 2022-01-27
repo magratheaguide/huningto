@@ -13,22 +13,34 @@ body {
     padding: var(--flow-space);
 }
 
+fieldset {
+    display: grid;
+    gap: 1em;
+    grid-template-columns: [input] auto [label] 1fr;
+    padding-block: 1em;
+}
+
+fieldset input {
+    grid-column: input;
+}
+
+fieldset label {
+    grid-column: label;
+}
+
 footer {
     border-block-start: var(--border);
     padding-block-start: var(--flow-space);
     text-align: center;
 }
 
-/* form section {
+form button {
+    min-inline-size: 15ch;
+}
+
+form p {
     display: flex;
     flex-direction: column;
-    gap: 1em;
-} */
-
-form button {
-    /* grid-column: 2; */
-    /* justify-self: end; */
-    min-inline-size: 15ch;
 }
 
 header {
@@ -43,6 +55,10 @@ hr {
     margin-block: 2em;
 }
 
+[hidden] {
+    display: none;
+}
+
 .flow > * + * {
     margin-block-start: var(--flow-space, 1em);
 }
@@ -50,9 +66,4 @@ hr {
 .flow > * > * {
     /* reset to avoid unexpected inheritance */
     --flow-space: 1em;
-}
-
-#from-json:not(:checked) ~ [data-build-from="json"],
-#from-scratch:not(:checked) ~ [data-build-from="scratch"] {
-    display: none;
 }
