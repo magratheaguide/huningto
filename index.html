@@ -39,12 +39,18 @@
                 <section>
                     <h2>Content</h2>
 
-                    <p>
+                    <input id="from-scratch" name="build-from" type="radio" value="scratch" checked required></input>
+                    <label for="from-scratch">I want to build my message from scratch.</label>
+
+                    <input id="from-json" name="build-from" type="radio" value="json" required></input>
+                    <label for="from-json">I already have my message built and formatted as JSON.</label>
+
+                    <p data-build-from="scratch">
                         <label for="message">Message</label>
                         <textarea id="message" maxlength="2000" name="content" rows="5"></textarea>
                     </p>
                     
-                    <p>
+                    <p data-build-from="json">
                         <label for="payload-json">Message JSON</label>
                         <textarea id="payload-json" name="payload_json" rows="5"></textarea>
                     </p>
@@ -69,9 +75,9 @@
         <footer>
             <p>Copyright (c) 2022 <a href="https://magrathea.guide">Magrathea</a>.</p>
             
-            <p><a href="https://github.com/magratheaguide/huningto/blob/main/LICENSE">Released under the MIT License.</a></p>
+            <p><a href="https://github.com/magratheaguide/mon-cala/blob/main/LICENSE">Released under the MIT License.</a></p>
             
-            <p><a href="https://github.com/magratheaguide/huningto">View on GitHub.</a></p>
+            <p><a href="https://github.com/magratheaguide/mon-cala">View on GitHub.</a></p>
         </footer>
     </body>
 </html>

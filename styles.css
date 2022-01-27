@@ -51,3 +51,8 @@ hr {
     /* reset to avoid unexpected inheritance */
     --flow-space: 1em;
 }
+
+#from-json:not(:checked) ~ [data-build-from="json"],
+#from-scratch:not(:checked) ~ [data-build-from="scratch"] {
+    display: none;
+}
