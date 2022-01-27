@@ -6,7 +6,7 @@
 
 body {
     margin-inline: auto;
-    max-width: 90ch;
+    max-width: 65ch;
     min-height: 100%;
     padding: 2em;
 }
@@ -28,16 +28,8 @@ fieldset label {
 
 footer {
     border-block-start: var(--border);
-    padding-block-start: var(--flow-space);
+    padding-block-start: 1em;
     text-align: center;
-}
-
-form {
-    --flow-space: 2em;
-}
-
-form section > * {
-    --flow-space: 1em;
 }
 
 form button {
