@@ -14,7 +14,8 @@
         output.value = "";
         submitButton.setAttribute("disabled", "");
         
-        if (form.elements.payload_json.value) {
+        // TODO: Need to teach this how to check dependent fields
+        if (form.elements.buildFrom.value === "json") {
             body.append("payload_json", form.elements.payload_json.value);
         } else {
             body.append("content", form.elements.content.value);
