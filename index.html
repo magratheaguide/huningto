@@ -8,61 +8,100 @@
             Huningto: Discord Messages via Webhook, A Magrathea Project
         </title>
 
-        <link href="https://cdn.jsdelivr.net/gh/thewildmage/css-reset@1/dist/reset.css" rel="stylesheet" />
+        <link
+            crossorigin="anonymous"
+            href="https://cdn.jsdelivr.net/gh/thewildmage/css-reset@1.0.2/dist/reset.css"
+            integrity="sha384-ZEnykvpKcqtBhYvsDZKsHFcCphbGlWNx3wG9ycweMcUvL4IMfa0d6gv+JhT45O/X"
+            rel="stylesheet"
+        />
         <link href="styles.css" rel="stylesheet" />
-        
+
         <script src="js/dependent-fields.js" defer></script>
         <script src="js/main.js" defer></script>
     </head>
     <body class="flow">
         <header>
             <h1>Huningto</h1>
-            <p>Discord messages via webhook. A <a href="https://magrathea.guide">Magrathea</a> project.</a></p>
+            <p>
+                Discord messages via webhook. A
+                <a href="https://magrathea.guide">Magrathea</a> project.
+            </p>
         </header>
 
         <main>
             <form class="flow" method="post">
                 <h2>Destination</h2>
-                
+
                 <p>
                     <label for="webhook-url">Webhook URL</label>
-                    <input id="webhook-url" name="action" type="url" required></input>
+                    <input id="webhook-url" name="action" type="url" required />
                 </p>
-                
+
                 <p>
                     <label for="thread-id">Thread ID</label>
-                    <span id="thread-id-explain">Leave blank for main channel</span>
-                    <input aria-describedby="thread-id-explain" id="thread-id" name="thread_id" type="number"></input>
+                    <span id="thread-id-explain"
+                        >Leave blank for main channel</span
+                    >
+                    <input
+                        aria-describedby="thread-id-explain"
+                        id="thread-id"
+                        name="thread_id"
+                        type="number"
+                    />
                 </p>
-            
+
                 <h2>Content</h2>
 
                 <fieldset>
                     <legend>I want to build my message...</legend>
 
-                    <input class="js-dependency" id="from-scratch" name="buildFrom" type="radio" value="scratch" checked required></input>
+                    <input
+                        class="js-dependency"
+                        id="from-scratch"
+                        name="buildFrom"
+                        type="radio"
+                        value="scratch"
+                        checked
+                        required
+                    />
                     <label for="from-scratch">...from scratch.</label>
-                    
-                    <input class="js-dependency" id="from-json" name="buildFrom" type="radio" value="json" required></input>
+
+                    <input
+                        class="js-dependency"
+                        id="from-json"
+                        name="buildFrom"
+                        type="radio"
+                        value="json"
+                        required
+                    />
                     <label for="from-json">...from JSON I already have.</label>
                 </fieldset>
 
                 <p class="js-dependency" data-build-from="scratch">
                     <label for="message">Message</label>
-                    <textarea id="message" maxlength="2000" name="content" rows="5"></textarea>
+                    <textarea
+                        id="message"
+                        maxlength="2000"
+                        name="content"
+                        rows="5"
+                    ></textarea>
                 </p>
-                
+
                 <p class="js-dependency" data-build-from="json">
                     <label for="payload-json">Message JSON</label>
-                    <textarea id="payload-json" name="payload_json" rows="5"></textarea>
+                    <textarea
+                        id="payload-json"
+                        name="payload_json"
+                        rows="5"
+                    ></textarea>
                 </p>
-            
+
                 <h2>Finish</h2>
-                
+
                 <p>
                     <button type="submit">Send</button>
                 </p>
-                
+
                 <p>
                     <label for="output">Server Response</label>
                     <output id="output">(None yet)</output>
@@ -71,11 +110,23 @@
         </main>
 
         <footer>
-            <p>Copyright (c) 2022 <a href="https://magrathea.guide">Magrathea</a>.</p>
-            
-            <p><a href="https://github.com/magratheaguide/mon-cala/blob/main/LICENSE">Released under the MIT License.</a></p>
-            
-            <p><a href="https://github.com/magratheaguide/mon-cala">View on GitHub.</a></p>
+            <p>
+                Copyright (c) 2022
+                <a href="https://magrathea.guide">Magrathea</a>.
+            </p>
+
+            <p>
+                <a
+                    href="https://github.com/magratheaguide/mon-cala/blob/main/LICENSE"
+                    >Released under the MIT License.</a
+                >
+            </p>
+
+            <p>
+                <a href="https://github.com/magratheaguide/mon-cala"
+                    >View on GitHub.</a
+                >
+            </p>
         </footer>
     </body>
 </html>
