@@ -17,7 +17,7 @@ Triggers and followers must be in the same form.
 let targetClass = "js-dependency";
 let form;
 let triggers, followers;
-let hiddenRequired = [];
+let requiredStorage = [];
 
 function initialize(f) {
     form = f;
@@ -42,39 +42,40 @@ function updateFollowers(key, value, checked = true) {
     followers.forEach((follower) => {
         if (follower.dataset[key]) {
             if (checked && follower.dataset[key] == value) {
-                show(follower);
-
-                let children = Array.from(follower.children);
-
-                children.forEach((child) => {
-                    if (hiddenRequired.includes(child)) {
-                        child.setAttribute("required", "");
-                        hiddenRequired = hiddenRequired.filter(
-                            (x) => x !== child
-                        );
-                    }
-                });
+                follower.removeAttribute("hidden");
+                recallRequired(follower);
             } else {
-                hide(follower);
-
-                Array.from(follower.children).forEach((child) => {
-                    if (child.required) {
-                        hiddenRequired.push(child);
-                        child.removeAttribute("required");
-                    }
-                });
+                follower.setAttribute("hidden", "");
+                storeRequired(follower);
             }
         }
     });
-    console.log(hiddenRequired);
 }
 
-function hide(element) {
-    element.setAttribute("hidden", "");
+function storeRequired(element) {
+    if (element.required) {
+        requiredStorage.push(element);
+        element.removeAttribute("required");
+    }
+
+    let children = Array.from(element.children);
+
+    children.forEach((child) => {
+        storeRequired(child);
+    });
 }
 
-function show(element) {
-    element.removeAttribute("hidden");
+function recallRequired(element) {
+    if (requiredStorage.includes(element)) {
+        element.setAttribute("required", "");
+        requiredStorage = requiredStorage.filter((x) => x !== element);
+    }
+
+    let children = Array.from(element.children);
+
+    children.forEach((child) => {
+        recallRequired(child);
+    });
 }
 
 export { initialize };
