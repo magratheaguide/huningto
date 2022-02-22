@@ -17,6 +17,7 @@ Triggers and followers must be in the same form.
 let targetClass = "js-dependency";
 let form;
 let triggers, followers;
+let hiddenRequired = [];
 
 function initialize(f) {
     form = f;
@@ -40,11 +41,32 @@ function initialize(f) {
 function updateFollowers(key, value, checked = true) {
     followers.forEach((follower) => {
         if (follower.dataset[key]) {
-            if (checked && follower.dataset[key] == value)
+            if (checked && follower.dataset[key] == value) {
                 follower.removeAttribute("hidden");
-            else follower.setAttribute("hidden", "");
+
+                let children = Array.from(follower.children);
+
+                children.forEach((child) => {
+                    if (hiddenRequired.includes(child)) {
+                        child.setAttribute("required", "");
+                        hiddenRequired = hiddenRequired.filter(
+                            (x) => x !== child
+                        );
+                    }
+                });
+            } else {
+                follower.setAttribute("hidden", "");
+
+                Array.from(follower.children).forEach((child) => {
+                    if (child.required) {
+                        hiddenRequired.push(child);
+                        child.removeAttribute("required");
+                    }
+                });
+            }
         }
     });
+    console.log(hiddenRequired);
 }
 
 export { initialize };
