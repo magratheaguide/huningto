@@ -1,31 +1,28 @@
+let targetClass = "js-dependency";
 let form;
-let dependencyTriggers, dependencyFollowers;
+let triggers, followers;
 
 function initialize(f) {
     form = f;
 
-    dependencyTriggers = form.querySelectorAll("input.js-dependency");
-    dependencyFollowers = form.querySelectorAll(".js-dependency:not(input)");
+    triggers = form.querySelectorAll(`input.${targetClass}`);
+    followers = form.querySelectorAll(`.${targetClass}:not(input)`);
 
-    dependencyTriggers.forEach((trigger) => {
+    triggers.forEach((trigger) => {
         // consider initial states
         if (trigger.checked) {
-            updateDependencyFollowers(trigger.name, trigger.value);
+            updateFollowers(trigger.name, trigger.value);
         }
 
         // update on change
         trigger.addEventListener("change", () => {
-            updateDependencyFollowers(
-                trigger.name,
-                trigger.value,
-                trigger.checked
-            );
+            updateFollowers(trigger.name, trigger.value, trigger.checked);
         });
     });
 }
 
-function updateDependencyFollowers(key, value, checked = true) {
-    dependencyFollowers.forEach((follower) => {
+function updateFollowers(key, value, checked = true) {
+    followers.forEach((follower) => {
         if (follower.dataset[key]) {
             if (checked && follower.dataset[key] == value)
                 follower.removeAttribute("hidden");
