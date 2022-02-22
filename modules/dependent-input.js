@@ -42,7 +42,7 @@ function updateFollowers(key, value, checked = true) {
     followers.forEach((follower) => {
         if (follower.dataset[key]) {
             if (checked && follower.dataset[key] == value) {
-                follower.removeAttribute("hidden");
+                show(follower);
 
                 let children = Array.from(follower.children);
 
@@ -55,7 +55,7 @@ function updateFollowers(key, value, checked = true) {
                     }
                 });
             } else {
-                follower.setAttribute("hidden", "");
+                hide(follower);
 
                 Array.from(follower.children).forEach((child) => {
                     if (child.required) {
@@ -67,6 +67,14 @@ function updateFollowers(key, value, checked = true) {
         }
     });
     console.log(hiddenRequired);
+}
+
+function hide(element) {
+    element.setAttribute("hidden", "");
+}
+
+function show(element) {
+    element.removeAttribute("hidden");
 }
 
 export { initialize };
