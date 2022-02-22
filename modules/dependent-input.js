@@ -1,12 +1,11 @@
-"use strict";
+let form;
+let dependencyTriggers, dependencyFollowers;
 
-(function () {
-    const form = document.querySelector("form");
+function initialize(f) {
+    form = f;
 
-    const dependencyTriggers = form.querySelectorAll("input.js-dependency");
-    const dependencyFollowers = form.querySelectorAll(
-        ".js-dependency:not(input)"
-    );
+    dependencyTriggers = form.querySelectorAll("input.js-dependency");
+    dependencyFollowers = form.querySelectorAll(".js-dependency:not(input)");
 
     dependencyTriggers.forEach((trigger) => {
         // consider initial states
@@ -23,14 +22,16 @@
             );
         });
     });
+}
 
-    function updateDependencyFollowers(key, value, checked = true) {
-        dependencyFollowers.forEach((follower) => {
-            if (follower.dataset[key]) {
-                if (checked && follower.dataset[key] == value)
-                    follower.removeAttribute("hidden");
-                else follower.setAttribute("hidden", "");
-            }
-        });
-    }
-})();
+function updateDependencyFollowers(key, value, checked = true) {
+    dependencyFollowers.forEach((follower) => {
+        if (follower.dataset[key]) {
+            if (checked && follower.dataset[key] == value)
+                follower.removeAttribute("hidden");
+            else follower.setAttribute("hidden", "");
+        }
+    });
+}
+
+export { initialize };
