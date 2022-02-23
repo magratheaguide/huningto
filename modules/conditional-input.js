@@ -2,19 +2,19 @@
 
 For triggers:
     - Must be an <input>
-    - Must have class js-dependency
+    - Must have class js-conditional
     - Must have a name
     - Must have a value
 
 For followers:
     - Must not be an input
-    - Must have class js-dependency
+    - Must have class js-conditional
     - Must have data attribute with name and value corresponding to intended trigger
 
 Triggers and followers must be in the same form.
 */
 
-let targetClass = "js-dependency";
+let targetClass = "js-conditional";
 let form;
 let triggers, followers;
 let requiredStorage = [];

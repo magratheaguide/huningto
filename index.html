@@ -55,7 +55,7 @@
                     <legend>I want to build my message...</legend>
 
                     <input
-                        class="js-dependency"
+                        class="js-conditional"
                         id="from-scratch"
                         name="buildFrom"
                         type="radio"
@@ -66,7 +66,7 @@
                     <label for="from-scratch">...from scratch.</label>
 
                     <input
-                        class="js-dependency"
+                        class="js-conditional"
                         id="from-json"
                         name="buildFrom"
                         type="radio"
@@ -76,7 +76,7 @@
                     <label for="from-json">...from JSON I already have.</label>
                 </fieldset>
 
-                <p class="js-dependency" data-build-from="scratch">
+                <p class="js-conditional" data-build-from="scratch">
                     <label for="message">Message</label>
                     <textarea
                         id="message"
@@ -87,7 +87,7 @@
                     ></textarea>
                 </p>
 
-                <p class="js-dependency" data-build-from="json">
+                <p class="js-conditional" data-build-from="json">
                     <label for="payload-json">Message JSON</label>
                     <textarea
                         id="payload-json"
