@@ -18,7 +18,8 @@
 
         <script src="/main.js" type="module"></script>
     </head>
-    <body class="flow">
+
+    <body class="flow" data-js-available="false">
         <header>
             <h1>Huningto</h1>
             <p>
@@ -27,7 +28,12 @@
             </p>
         </header>
 
-        <main>
+        <noscript
+            >JavaScript is required for this tool to work and does not appear to
+            be available at present.</noscript
+        >
+
+        <main class="js-only">
             <details class="flow measure">
                 <summary>
                     <h2>Get</h2>

@@ -67,3 +67,7 @@ summary > * {
 .measure {
     max-inline-size: var(--measure-target);
 }
+
+[data-js-available="false"] .js-only {
+    display: none;
+}
