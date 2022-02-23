@@ -52,6 +52,7 @@ function updateFollowers(key, value, checked = true) {
     });
 }
 
+// hidden, required elements are still considered in validation
 function storeRequired(element) {
     if (element.required) {
         requiredStorage.push(element);
