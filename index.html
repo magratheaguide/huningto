@@ -34,119 +34,119 @@
         >
 
         <main class="js-only">
-            <details class="flow measure">
-                <summary>
-                    <h2>Get</h2>
-                </summary>
-
-                <form class="flow" id="form-get" method="GET"></form>
-            </details>
-
-            <hr />
-
-            <details class="flow measure" open>
-                <summary>
-                    <h2>Send</h2>
-                </summary>
+            <article class="flow measure">
+                <h2 id="send">Send Message</h2>
 
                 <form class="flow" id="form-send" method="POST">
-                    <h3>Destination</h3>
+                    <section>
+                        <h3>Destination</h3>
 
-                    <p>
-                        <label for="webhook-url">Webhook URL</label>
-                        <input
-                            id="webhook-url"
-                            name="action"
-                            type="url"
-                            required
-                        />
-                    </p>
+                        <p>
+                            <label for="webhook-url">Webhook URL</label>
+                            <input
+                                id="webhook-url"
+                                name="action"
+                                type="url"
+                                required
+                            />
+                        </p>
 
-                    <p>
-                        <label for="thread-id">Thread ID</label>
-                        <span id="thread-id-explain"
-                            >Leave blank for main channel</span
-                        >
-                        <input
-                            aria-describedby="thread-id-explain"
-                            id="thread-id"
-                            name="thread_id"
-                            type="number"
-                        />
-                    </p>
+                        <p>
+                            <label for="thread-id">Thread ID</label>
+                            <span id="thread-id-explain"
+                                >Leave blank for main channel</span
+                            >
+                            <input
+                                aria-describedby="thread-id-explain"
+                                id="thread-id"
+                                name="thread_id"
+                                type="number"
+                            />
+                        </p>
+                    </section>
 
-                    <h3>Content</h3>
+                    <section>
+                        <h3>Content</h3>
 
-                    <fieldset>
-                        <legend>I want to build my message...</legend>
+                        <fieldset>
+                            <legend>I want to build my message...</legend>
 
-                        <input
-                            class="js-conditional"
-                            id="from-scratch"
-                            name="buildFrom"
-                            type="radio"
-                            value="scratch"
-                            checked
-                            required
-                        />
-                        <label for="from-scratch">...from scratch.</label>
+                            <input
+                                class="js-conditional"
+                                id="from-scratch"
+                                name="buildFrom"
+                                type="radio"
+                                value="scratch"
+                                checked
+                                required
+                            />
+                            <label for="from-scratch">...from scratch.</label>
 
-                        <input
-                            class="js-conditional"
-                            id="from-json"
-                            name="buildFrom"
-                            type="radio"
-                            value="json"
-                            required
-                        />
-                        <label for="from-json"
-                            >...from JSON I already have.</label
-                        >
-                    </fieldset>
+                            <input
+                                class="js-conditional"
+                                id="from-json"
+                                name="buildFrom"
+                                type="radio"
+                                value="json"
+                                required
+                            />
+                            <label for="from-json"
+                                >...from JSON I already have.</label
+                            >
+                        </fieldset>
 
-                    <p class="js-conditional" data-build-from="scratch">
-                        <label for="message">Message</label>
-                        <textarea
-                            id="message"
-                            maxlength="2000"
-                            name="content"
-                            rows="5"
-                            required
-                        ></textarea>
-                    </p>
+                        <p class="js-conditional" data-build-from="scratch">
+                            <label for="message">Message</label>
+                            <textarea
+                                id="message"
+                                maxlength="2000"
+                                name="content"
+                                rows="5"
+                                required
+                            ></textarea>
+                        </p>
 
-                    <p class="js-conditional" data-build-from="json">
-                        <label for="payload-json">Message JSON</label>
-                        <textarea
-                            id="payload-json"
-                            name="payload_json"
-                            rows="5"
-                            required
-                        ></textarea>
-                    </p>
+                        <p class="js-conditional" data-build-from="json">
+                            <label for="payload-json">Message JSON</label>
+                            <textarea
+                                id="payload-json"
+                                name="payload_json"
+                                rows="5"
+                                required
+                            ></textarea>
+                        </p>
+                    </section>
 
-                    <h3>Finish</h3>
+                    <section>
+                        <h3>Finish</h3>
 
-                    <p>
-                        <button type="submit">Send</button>
-                    </p>
+                        <p>
+                            <button type="submit">Send</button>
+                        </p>
 
-                    <p>
-                        <label for="output">Server Response</label>
-                        <output id="output">(None yet)</output>
-                    </p>
+                        <p>
+                            <label for="output">Server Response</label>
+                            <output id="output">(None yet)</output>
+                        </p>
+                    </section>
                 </form>
-            </details>
+            </article>
 
             <hr />
 
-            <details class="flow measure">
-                <summary>
-                    <h2>Edit</h2>
-                </summary>
+            <article class="flow measure">
+                <h2 id="get">Get Message Content</h2>
+
+                <form class="flow" id="form-get" method="GET"></form>
+            </article>
+
+            <hr />
+
+            <article class="flow measure">
+                <h2 id="edit">Edit Message</h2>
 
                 Placeholder for work in progress.
-            </details>
+            </article>
         </main>
 
         <footer>
