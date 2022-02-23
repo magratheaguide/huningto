@@ -2,13 +2,12 @@
     --border: 2px dotted var(--color-grey);
 
     --color-grey: hsl(0deg 0% 50%);
+
+    --measure-target: 65ch;
 }
 
 body {
-    margin-inline: auto;
-    max-width: 65ch;
-    min-height: 100%;
-    padding: 2em;
+    padding: 1em;
 }
 
 fieldset {
@@ -62,5 +61,9 @@ summary > * {
 }
 
 .flow > * + * {
-    margin-block-start: var(--flow-space, 1em);
+    margin-block-start: 0.75em;
+}
+
+.measure {
+    max-inline-size: var(--measure-target);
 }
