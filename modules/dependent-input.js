@@ -52,7 +52,10 @@ function updateFollowers(key, value, checked = true) {
     });
 }
 
-// hidden, required elements are still considered in validation
+/*
+hidden, required elements are still considered in validation,
+so we need to make them un-required when we hide them
+*/
 function storeRequired(element) {
     if (element.required) {
         requiredStorage.push(element);
