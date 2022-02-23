@@ -53,6 +53,10 @@ hr {
     margin-block: 2em;
 }
 
+summary > * {
+    display: inline;
+}
+
 [hidden] {
     display: none;
 }
