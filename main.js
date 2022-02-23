@@ -4,8 +4,9 @@ import * as ConditionalInput from "/modules/conditional-input.js";
 
 JsCheck.setJsAvailable();
 
-const form = document.querySelector("form");
-const output = document.querySelector("output");
+// set up send form
+const sendForm = document.getElementById("form-send");
+const sendOutput = sendForm.querySelector("output");
 
-Send.initialize(form, output);
-ConditionalInput.initialize(form);
+Send.initialize(sendForm, sendOutput);
+ConditionalInput.initialize(sendForm);
