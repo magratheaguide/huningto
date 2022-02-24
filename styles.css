@@ -106,7 +106,7 @@ summary > * {
 }
 
 .flow > * + * {
-    margin-block-start: var(--space-300);
+    margin-block-start: var(--space-500);
 }
 
 .measure {
