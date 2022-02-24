@@ -1,74 +1,65 @@
-let form, output;
+import { WebhookHandler } from "/modules/webhook-handler.js";
 
-function initialize(f, o) {
-    form = f;
-    output = o;
+class SendHandler extends WebhookHandler {
+    constructor(form, output) {
+        super(form, output);
 
-    form.addEventListener("submit", handleSubmit);
-}
-
-function handleSubmit(event) {
-    event.preventDefault();
-
-    let submitButton = event.submitter;
-    let url = constructUrl(form.elements);
-    let body = new FormData();
-
-    output.value = "";
-    submitButton.setAttribute("disabled", "");
-
-    if (form.elements.buildFrom.value === "json") {
-        body.append("payload_json", form.elements.payload_json.value);
-    } else {
-        body.append("content", form.elements.content.value);
+        this.method = "POST";
     }
 
-    fetch(url, {
-        body: body,
-        method: "POST",
-    }).then((response) => {
-        displayResponse(response);
-    });
+    constructUrl(elements) {
+        let baseUrl = elements.action.value.trim() + "?wait=true";
+        let threadId = elements.thread_id.value.trim();
 
-    submitButton.removeAttribute("disabled");
-}
-
-function constructUrl(elements) {
-    let baseUrl = elements.action.value;
-    let threadId = elements.thread_id.value.trim();
-
-    if (threadId) {
-        return `${baseUrl}?thread_id=${threadId}`;
+        if (threadId) {
+            return `${baseUrl}&thread_id=${threadId}`;
+        } else {
+            return baseUrl;
+        }
     }
 
-    return baseUrl;
-}
+    constructFetchInit(elements) {
+        let body = new FormData();
 
-function displayResponse(response) {
-    if (response.ok) {
-        insertLinebreak(output);
-        output.value = "Message sent successfully";
-    } else {
-        output.value = `HTTP Status Code ${response.status}: ${response.statusText}`;
+        if (elements.buildFrom.value === "json") {
+            body.append("payload_json", this.form.elements.payload_json.value);
+        } else {
+            body.append("content", this.form.elements.content.value);
+        }
 
-        response.text().then((text) => {
-            try {
-                let json = JSON.parse(text);
+        return {
+            body: body,
+            method: this.method,
+        };
+    }
 
-                for (const [key, value] of Object.entries(json)) {
-                    insertLinebreak(output);
-                    output.append(`${key}: ${value}`);
+    displayResponse(response) {
+        if (response.ok) {
+            this.output.value = "Message sent successfully";
+        } else {
+            this.output.value = `HTTP Status Code ${response.status}: ${response.statusText}`;
+
+            response.text().then((text) => {
+                try {
+                    let json = JSON.parse(text);
+
+                    for (const [key, value] of Object.entries(json)) {
+                        this.insertLinebreak(this.output);
+                        this.output.append(`${key}: ${value}`);
+                    }
+                } catch (error) {
+                    console.error(error);
+
+                    this.insertLinebreak(this.output);
+                    this.output.append(text);
                 }
-            } catch {
-                insertLinebreak(output);
-                output.append(text);
-            }
-        });
+            });
+        }
+    }
+
+    insertLinebreak(element) {
+        element.append(document.createElement("br"));
     }
 }
 
-function insertLinebreak(element) {
-    element.append(document.createElement("br"));
-}
-
-export { initialize };
+export { SendHandler };

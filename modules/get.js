@@ -1,48 +1,37 @@
-let form, output;
+import { WebhookHandler } from "/modules/webhook-handler.js";
 
-function initialize(f, o) {
-    form = f;
-    output = o;
+class GetHandler extends WebhookHandler {
+    constructor(form, output) {
+        super(form, output);
 
-    form.addEventListener("submit", handleSubmit);
-}
-
-function handleSubmit(event) {
-    event.preventDefault();
-
-    let submitButton = event.submitter;
-    let url = constructUrl(form.elements);
-
-    output.value = "";
-    submitButton.setAttribute("disabled", "");
-
-    fetch(url, {
-        method: "GET",
-    }).then((response) => {
-        displayResponse(response);
-    });
-
-    submitButton.removeAttribute("disabled");
-}
-
-function constructUrl(elements) {
-    let baseUrl = elements.action.value.trim();
-    let threadId = elements.thread_id.value.trim();
-    let messageId = elements.message_id.value.trim();
-
-    let composite = `${baseUrl}/messages/${messageId}`;
-
-    if (threadId) {
-        return `${composite}?thread_id=${threadId}`;
+        this.method = "GET";
     }
 
-    return composite;
+    constructUrl(elements) {
+        let baseUrl = elements.action.value.trim();
+        let threadId = elements.thread_id.value.trim();
+        let messageId = elements.message_id.value.trim();
+
+        let composite = `${baseUrl}/messages/${messageId}`;
+
+        if (threadId) {
+            composite = `${composite}?thread_id=${threadId}`;
+        }
+
+        return composite;
+    }
+
+    constructFetchInit(elements) {
+        return {
+            method: this.method,
+        };
+    }
+
+    displayResponse(response) {
+        response.text().then((text) => {
+            this.output.append(text);
+        });
+    }
 }
 
-function displayResponse(response) {
-    response.text().then((text) => {
-        output.append(text);
-    });
-}
-
-export { initialize };
+export { GetHandler };
