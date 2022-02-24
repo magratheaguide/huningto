@@ -42,9 +42,9 @@
                         <h3>Destination</h3>
 
                         <p>
-                            <label for="webhook-url">Webhook URL</label>
+                            <label for="webhook-url-send">Webhook URL</label>
                             <input
-                                id="webhook-url"
+                                id="webhook-url-send"
                                 name="action"
                                 type="url"
                                 required
@@ -52,13 +52,13 @@
                         </p>
 
                         <p>
-                            <label for="thread-id">Thread ID</label>
-                            <span id="thread-id-explain"
+                            <label for="thread-id-send">Thread ID</label>
+                            <span id="thread-id-send-explain"
                                 >Leave blank for main channel</span
                             >
                             <input
-                                aria-describedby="thread-id-explain"
-                                id="thread-id"
+                                aria-describedby="thread-id-send-explain"
+                                id="thread-id-send"
                                 name="thread_id"
                                 type="number"
                             />
@@ -125,8 +125,8 @@
                         </p>
 
                         <p>
-                            <label for="output">Server Response</label>
-                            <output id="output">(None yet)</output>
+                            <label for="output-send">Server Response</label>
+                            <output id="output-send">(None yet)</output>
                         </p>
                     </section>
                 </form>
@@ -137,7 +137,57 @@
             <article class="flow measure">
                 <h2 id="get">Get Message Content</h2>
 
-                <form class="flow" id="form-get" method="GET"></form>
+                <form class="flow" id="form-get" method="GET">
+                    <section>
+                        <h3>Source</h3>
+
+                        <p>
+                            <label for="webhook-url-get">Webhook URL</label>
+                            <input
+                                id="webhook-url-get"
+                                name="action"
+                                type="url"
+                                required
+                            />
+                        </p>
+
+                        <p>
+                            <label for="thread-id-get">Thread ID</label>
+                            <span id="thread-id-get-explain"
+                                >Leave blank for main channel</span
+                            >
+                            <input
+                                aria-describedby="thread-id-get-explain"
+                                id="thread-id-get"
+                                name="thread_id"
+                                type="number"
+                            />
+                        </p>
+
+                        <p>
+                            <label for="message-id-get">Message ID</label>
+                            <input
+                                id="message-id-get"
+                                name="message_id"
+                                type="number"
+                                required
+                            />
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>Finish</h3>
+
+                        <p>
+                            <button type="submit">Get</button>
+                        </p>
+
+                        <p>
+                            <label for="output-get">Server Response</label>
+                            <output id="output-get">(None yet)</output>
+                        </p>
+                    </section>
+                </form>
             </article>
 
             <hr />
@@ -145,7 +195,7 @@
             <article class="flow measure">
                 <h2 id="edit">Edit Message</h2>
 
-                Placeholder for work in progress.
+                <p>Placeholder for work in progress. Stay tuned.</p>
             </article>
         </main>
 
