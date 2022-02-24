@@ -1,6 +1,8 @@
 :root {
-    --border: 2px dotted var(--color-grey);
-    --border-2: 1px solid var(--color-grey);
+    --border-base: solid var(--color-grey-light);
+
+    --border-thin: 1px var(--border-base);
+    --border-thick: var(--space-200) var(--border-base);
 
     --color-grey: hsl(0deg 0% 50%);
     --color-grey-dark: hsl(0deg 0% 35%);
@@ -9,6 +11,7 @@
     --measure-min: 45ch;
     --measure-target: 65ch;
 
+    --space-200: 0.5em;
     --space-300: 0.75em;
     --space-400: 1em;
     --space-500: 2em;
@@ -34,7 +37,7 @@ fieldset label {
 }
 
 footer {
-    border-block-start: var(--border);
+    border-block-start: var(--border-thin);
     padding-block-start: var(--space-400);
     text-align: center;
 }
@@ -58,15 +61,31 @@ form p {
     flex-direction: column;
 }
 
+form section {
+    --inset: var(--space-500);
+
+    border: var(--border-thin);
+    border-inline-start: var(--border-thick);
+    padding: var(--space-500);
+}
+
 header {
-    border-block-end: var(--border);
+    border-block-end: var(--border-thin);
     padding-block-end: var(--space-400);
     text-align: center;
 }
 
+h2 {
+    margin-block: var(--space-500) var(--space-300);
+}
+
+h3 {
+    margin-block-end: var(--space-500);
+}
+
 hr {
     border: none;
-    border-block-start: var(--border);
+    border-block-start: var(--border-thick);
     margin-block: var(--space-500);
 }
 
