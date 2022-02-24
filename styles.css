@@ -66,6 +66,7 @@ form section {
 
     border: var(--border-thin);
     border-inline-start: var(--border-thick);
+    border-start-end-radius: var(--space-400);
     padding: var(--space-500);
 }
 
