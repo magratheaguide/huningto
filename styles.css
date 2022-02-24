@@ -4,19 +4,25 @@
 
     --color-grey: hsl(0deg 0% 50%);
     --color-grey-dark: hsl(0deg 0% 35%);
+    --color-grey-light: hsl(0deg 0% 85%);
 
+    --measure-min: 45ch;
     --measure-target: 65ch;
+
+    --space-300: 0.75em;
+    --space-400: 1em;
+    --space-500: 2em;
 }
 
 body {
-    padding: 1em;
+    padding: var(--space-400);
 }
 
 fieldset {
     display: grid;
-    gap: 1em;
+    gap: var(--space-400);
     grid-template-columns: [input] auto [label] 1fr;
-    padding-block: 1em;
+    padding-block: var(--space-400);
 }
 
 fieldset input {
@@ -29,8 +35,14 @@ fieldset label {
 
 footer {
     border-block-start: var(--border);
-    padding-block-start: 1em;
+    padding-block-start: var(--space-400);
     text-align: center;
+}
+
+form {
+    display: grid;
+    gap: var(--space-500);
+    grid-template-columns: repeat(auto-fill, minmax(var(--measure-min), 1fr));
 }
 
 form button {
@@ -44,21 +56,21 @@ form p {
 
 header {
     border-block-end: var(--border);
-    padding-block-end: 1em;
+    padding-block-end: var(--space-400);
     text-align: center;
 }
 
 hr {
     border: none;
     border-block-start: var(--border);
-    margin-block: 2em;
+    margin-block: var(--space-500);
 }
 
 output {
-    border: var(--border-2);
+    background-color: var(--color-grey-light);
     color: var(--color-grey-dark);
     font-family: monospace;
-    padding: 1em;
+    padding: var(--space-400);
 }
 
 summary > * {
@@ -70,7 +82,7 @@ summary > * {
 }
 
 .flow > * + * {
-    margin-block-start: 0.75em;
+    margin-block-start: var(--space-300);
 }
 
 .measure {
