@@ -89,6 +89,16 @@ summary > * {
     max-inline-size: var(--measure-target);
 }
 
+.numbered {
+    counter-reset: numbered;
+}
+
+.numbered .numbered__item::before {
+    color: var(--color-grey);
+    content: counter(numbered) ". ";
+    counter-increment: numbered;
+}
+
 [data-js-available="false"] .js-only {
     display: none;
 }
