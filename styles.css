@@ -1,7 +1,9 @@
 :root {
     --border: 2px dotted var(--color-grey);
+    --border-2: 1px solid var(--color-grey);
 
     --color-grey: hsl(0deg 0% 50%);
+    --color-grey-dark: hsl(0deg 0% 35%);
 
     --measure-target: 65ch;
 }
@@ -50,6 +52,13 @@ hr {
     border: none;
     border-block-start: var(--border);
     margin-block: 2em;
+}
+
+output {
+    border: var(--border-2);
+    color: var(--color-grey-dark);
+    font-family: monospace;
+    padding: 1em;
 }
 
 summary > * {
