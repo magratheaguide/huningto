@@ -37,14 +37,14 @@
             <article>
                 <h2 id="send">Send Message</h2>
 
-                <form class="numbered" id="form-send">
+                <form class="numbered" id="send-form">
                     <section class="flow">
                         <h3 class="numbered__item">Destination</h3>
 
                         <p>
-                            <label for="webhook-url-send">Webhook URL</label>
+                            <label for="send-webhook-url">Webhook URL</label>
                             <input
-                                id="webhook-url-send"
+                                id="send-webhook-url"
                                 name="action"
                                 type="url"
                                 required
@@ -52,13 +52,13 @@
                         </p>
 
                         <p>
-                            <label for="thread-id-send">Thread ID</label>
-                            <span id="thread-id-send-explain"
+                            <label for="send-thread-id">Thread ID</label>
+                            <span id="send-thread-id-explain"
                                 >Leave blank for main channel</span
                             >
                             <input
-                                aria-describedby="thread-id-send-explain"
-                                id="thread-id-send"
+                                aria-describedby="send-thread-id-explain"
+                                id="send-thread-id"
                                 name="thread_id"
                                 type="number"
                             />
@@ -127,8 +127,8 @@
                         </p>
 
                         <p>
-                            <label for="output-send">Server Response</label>
-                            <output id="output-send">(None yet)</output>
+                            <label for="send-output">Server Response</label>
+                            <output id="send-output">(None yet)</output>
                         </p>
                     </section>
                 </form>
@@ -137,14 +137,14 @@
             <article>
                 <h2 id="get">Get Message Content</h2>
 
-                <form class="numbered" id="form-get">
+                <form class="numbered" id="get-form">
                     <section class="flow">
                         <h3 class="numbered__item">Source</h3>
 
                         <p>
-                            <label for="webhook-url-get">Webhook URL</label>
+                            <label for="get-webhook-url">Webhook URL</label>
                             <input
-                                id="webhook-url-get"
+                                id="get-webhook-url"
                                 name="action"
                                 type="url"
                                 required
@@ -152,22 +152,22 @@
                         </p>
 
                         <p>
-                            <label for="thread-id-get">Thread ID</label>
-                            <span id="thread-id-get-explain"
+                            <label for="get-thread-id">Thread ID</label>
+                            <span id="get-thread-id-explain"
                                 >Leave blank for main channel</span
                             >
                             <input
-                                aria-describedby="thread-id-get-explain"
-                                id="thread-id-get"
+                                aria-describedby="get-thread-id-explain"
+                                id="get-thread-id"
                                 name="thread_id"
                                 type="number"
                             />
                         </p>
 
                         <p>
-                            <label for="message-id-get">Message ID</label>
+                            <label for="get-message-id">Message ID</label>
                             <input
-                                id="message-id-get"
+                                id="get-message-id"
                                 name="message_id"
                                 type="number"
                                 required
@@ -183,8 +183,8 @@
                         </p>
 
                         <p>
-                            <label for="output-get">Server Response</label>
-                            <output id="output-get">(None yet)</output>
+                            <label for="get-output">Server Response</label>
+                            <output id="get-output">(None yet)</output>
                         </p>
                     </section>
                 </form>
@@ -193,19 +193,19 @@
             <article>
                 <h2 id="edit">Edit Message</h2>
 
-                <form class="numbered" id="form-edit">
+                <form class="numbered" id="edit-form">
                     <section class="flow">
                         <h3 class="numbered__item">Source</h3>
 
                         <p>
-                            <label for="webhook-url-edit">Webhook URL</label>
-                            <span id="webhook-url-edit-explain"
+                            <label for="edit-webhook-url">Webhook URL</label>
+                            <span id="edit-webhook-url-explain"
                                 >Must be the same webhook that was used to send
                                 the message originally</span
                             >
                             <input
-                                aria-describedby="webhook-url-edit-explain"
-                                id="webhook-url-edit"
+                                aria-describedby="edit-webhook-url-explain"
+                                id="edit-webhook-url"
                                 name="action"
                                 type="url"
                                 required
@@ -213,22 +213,22 @@
                         </p>
 
                         <p>
-                            <label for="thread-id-edit">Thread ID</label>
-                            <span id="thread-id-edit-explain"
+                            <label for="edit-thread-id">Thread ID</label>
+                            <span id="edit-thread-id-explain"
                                 >Leave blank for main channel</span
                             >
                             <input
-                                aria-describedby="thread-id-edit-explain"
-                                id="thread-id-edit"
+                                aria-describedby="edit-thread-id-explain"
+                                id="edit-thread-id"
                                 name="thread_id"
                                 type="number"
                             />
                         </p>
 
                         <p>
-                            <label for="message-id-edit">Message ID</label>
+                            <label for="edit-message-id">Message ID</label>
                             <input
-                                id="message-id-edit"
+                                id="edit-message-id"
                                 name="message_id"
                                 type="number"
                                 required
