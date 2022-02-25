@@ -7,21 +7,7 @@ class GetHandler extends WebhookHandler {
         this.method = "GET";
     }
 
-    constructUrl(elements) {
-        let baseUrl = elements.action.value.trim();
-        let threadId = elements.thread_id.value.trim();
-        let messageId = elements.message_id.value.trim();
-
-        let composite = `${baseUrl}/messages/${messageId}`;
-
-        if (threadId) {
-            composite = `${composite}?thread_id=${threadId}`;
-        }
-
-        return composite;
-    }
-
-    constructFetchInit(elements) {
+    constructFetchInit() {
         return {
             method: this.method,
         };
