@@ -2,6 +2,7 @@ import * as JsCheck from "./modules/js-check.js";
 import { SendHandler } from "./modules/send-handler.js";
 import * as ConditionalInput from "./modules/conditional-input.js";
 import { GetHandler } from "./modules/get-handler.js";
+import { EditHandler } from "./modules/edit-handler.js";
 
 JsCheck.setJsAvailable();
 
@@ -19,3 +20,11 @@ const getOutput = document.getElementById("get-output");
 const getHandler = new GetHandler(getForm, getOutput);
 
 getHandler.register();
+
+// set up edit form
+const editForm = document.getElementById("edit-form");
+const editOutput = document.getElementById("edit-output");
+const editHandler = new EditHandler(editForm, editOutput);
+
+editHandler.register();
+ConditionalInput.initialize(editForm);

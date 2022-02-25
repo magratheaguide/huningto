@@ -29,6 +29,10 @@ class WebhookHandler {
 
         submitButton.removeAttribute("disabled");
     }
+
+    insertLinebreak(element) {
+        element.append(document.createElement("br"));
+    }
 }
 
 export { WebhookHandler };

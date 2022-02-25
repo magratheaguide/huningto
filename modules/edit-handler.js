@@ -1,21 +1,24 @@
 import { WebhookHandler } from "./webhook-handler.js";
 
-class SendHandler extends WebhookHandler {
+class EditHandler extends WebhookHandler {
     constructor(form, output) {
         super(form, output);
 
-        this.method = "POST";
+        this.method = "PATCH";
     }
 
     constructUrl(elements) {
-        let baseUrl = elements.action.value.trim() + "?wait=true";
+        let baseUrl = elements.action.value.trim();
         let threadId = elements.thread_id.value.trim();
+        let messageId = elements.message_id.value.trim();
+
+        let composite = `${baseUrl}/messages/${messageId}`;
 
         if (threadId) {
-            return `${baseUrl}&thread_id=${threadId}`;
-        } else {
-            return baseUrl;
+            composite = `${composite}?thread_id=${threadId}`;
         }
+
+        return composite;
     }
 
     constructFetchInit(elements) {
@@ -35,7 +38,7 @@ class SendHandler extends WebhookHandler {
 
     displayResponse(response) {
         if (response.ok) {
-            this.output.value = "Message sent successfully";
+            this.output.value = "Message edited successfully";
         } else {
             this.output.value = `HTTP Status Code ${response.status}: ${response.statusText}`;
 
@@ -58,4 +61,4 @@ class SendHandler extends WebhookHandler {
     }
 }
 
-export { SendHandler };
+export { EditHandler };
