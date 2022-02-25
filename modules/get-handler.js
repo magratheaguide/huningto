@@ -7,7 +7,7 @@ class GetHandler extends WebhookHandler {
         this.method = "GET";
     }
 
-    constructFetchInit(elements) {
+    constructFetchInit() {
         return {
             method: this.method,
         };
