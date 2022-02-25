@@ -1,7 +1,7 @@
 import * as JsCheck from "./modules/js-check.js";
-import { SendHandler } from "./modules/send.js";
+import { SendHandler } from "./modules/send-handler.js";
 import * as ConditionalInput from "./modules/conditional-input.js";
-import { GetHandler } from "./modules/get.js";
+import { GetHandler } from "./modules/get-handler.js";
 
 JsCheck.setJsAvailable();
 
