@@ -14,72 +14,81 @@ For followers:
 Triggers and followers must be in the same form.
 */
 
-let targetClass = "js-conditional";
-let form;
-let triggers, followers;
-let requiredStorage = [];
+class ConditionalInput {
+    constructor(form) {
+        this.form = form;
+        this.targetClass = "js-conditional";
 
-function initialize(f) {
-    form = f;
+        this.triggers = this.form.querySelectorAll(`input.${this.targetClass}`);
+        this.followers = this.form.querySelectorAll(
+            `.${this.targetClass}:not(input)`
+        );
 
-    triggers = form.querySelectorAll(`input.${targetClass}`);
-    followers = form.querySelectorAll(`.${targetClass}:not(input)`);
+        this.requiredStorage = [];
+    }
 
-    triggers.forEach((trigger) => {
-        // consider initial states
-        if (trigger.checked) {
-            updateFollowers(trigger.name, trigger.value);
-        }
-
-        // update on change
-        trigger.addEventListener("change", () => {
-            updateFollowers(trigger.name, trigger.value, trigger.checked);
-        });
-    });
-}
-
-function updateFollowers(key, value, checked = true) {
-    followers.forEach((follower) => {
-        if (follower.dataset[key]) {
-            if (checked && follower.dataset[key] == value) {
-                follower.removeAttribute("hidden");
-                recallRequired(follower);
-            } else {
-                follower.setAttribute("hidden", "");
-                storeRequired(follower);
+    register() {
+        const that = this;
+        this.triggers.forEach((trigger) => {
+            // consider initial state
+            if (trigger.checked) {
+                this.updateFollowers(trigger.name, trigger.value);
             }
+
+            // update on change
+            trigger.addEventListener("change", function (event) {
+                that.updateFollowers(
+                    trigger.name,
+                    trigger.value,
+                    trigger.checked
+                );
+            });
+        });
+    }
+
+    updateFollowers(key, value, checked = true) {
+        this.followers.forEach((follower) => {
+            if (follower.dataset[key]) {
+                if (checked && follower.dataset[key] == value) {
+                    follower.removeAttribute("hidden");
+                    this.recallRequired(follower);
+                } else {
+                    follower.setAttribute("hidden", "");
+                    this.storeRequired(follower);
+                }
+            }
+        });
+        console.log("this = ", this);
+        console.log("requiredStorage = ", this.requiredStorage);
+    }
+
+    /*
+    hidden, required elements are still considered in validation,
+    so we need to make them un-required when we hide them
+    */
+    storeRequired(element) {
+        if (element.required) {
+            this.requiredStorage.push(element);
+            element.removeAttribute("required");
         }
-    });
-}
 
-/*
-hidden, required elements are still considered in validation,
-so we need to make them un-required when we hide them
-*/
-function storeRequired(element) {
-    if (element.required) {
-        requiredStorage.push(element);
-        element.removeAttribute("required");
+        Array.from(element.children).forEach((child) => {
+            this.storeRequired(child);
+        });
     }
 
-    let children = Array.from(element.children);
+    recallRequired(element) {
+        if (this.requiredStorage.includes(element)) {
+            element.setAttribute("required", "");
+            this.requiredStorage = this.requiredStorage.filter(
+                (x) => x !== element
+            );
+        }
 
-    children.forEach((child) => {
-        storeRequired(child);
-    });
-}
-
-function recallRequired(element) {
-    if (requiredStorage.includes(element)) {
-        element.setAttribute("required", "");
-        requiredStorage = requiredStorage.filter((x) => x !== element);
+        Array.from(element.children).forEach((child) => {
+            this.recallRequired(child);
+        });
     }
-
-    let children = Array.from(element.children);
-
-    children.forEach((child) => {
-        recallRequired(child);
-    });
 }
 
-export { initialize };
+export { ConditionalInput };
