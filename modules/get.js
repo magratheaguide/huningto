@@ -1,4 +1,4 @@
-import { WebhookHandler } from "/modules/webhook-handler.js";
+import { WebhookHandler } from "./webhook-handler.js";
 
 class GetHandler extends WebhookHandler {
     constructor(form, output) {
