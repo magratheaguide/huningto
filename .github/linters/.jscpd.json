@@ -1,0 +1,11 @@
+{
+    "absolute": true,
+    "ignore": [
+        "**/__snapshots__/**",
+        "**/*.html"
+    ],
+    "reporters": [
+        "consoleFull"
+    ],
+    "threshold": 0
+}
