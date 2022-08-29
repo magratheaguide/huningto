@@ -21,7 +21,7 @@ class ConditionalInput {
 
         this.triggers = this.form.querySelectorAll(`input.${this.targetClass}`);
         this.followers = this.form.querySelectorAll(
-            `.${this.targetClass}:not(input)`,
+            `.${this.targetClass}:not(input)`
         );
 
         this.requiredStorage = [];
@@ -40,7 +40,7 @@ class ConditionalInput {
                 that.updateFollowers(
                     trigger.name,
                     trigger.value,
-                    trigger.checked,
+                    trigger.checked
                 );
             });
         });
@@ -81,7 +81,7 @@ class ConditionalInput {
         if (this.requiredStorage.includes(element)) {
             element.setAttribute("required", "");
             this.requiredStorage = this.requiredStorage.filter(
-                (x) => x !== element,
+                (x) => x !== element
             );
         }
 
